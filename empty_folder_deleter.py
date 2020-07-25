@@ -2,6 +2,20 @@ import os
 
 
 def folder_deleter(folder_name: str, verbose_mode: bool = True) -> int:
+    """Delete a folder if it is empty, if the folder is deleted successfully it returns 0 otherwise returns 1
+
+    Parameters
+    ----------
+    folder_name : str
+        The name of the folder to be deleted
+    verbose_mode : bool, optional
+        Variable to activate the prints in the function, by default True
+
+    Returns
+    -------
+    successfull_delete : bool
+        If the folder is deleted successfully it returns 0 otherwise returns 1
+    """
 
     successfull_delete = 1
     if os.listdir(folder_name) == []:
@@ -13,5 +27,3 @@ def folder_deleter(folder_name: str, verbose_mode: bool = True) -> int:
 
     return successfull_delete
 
-
-# folder_deleter("prueba")
