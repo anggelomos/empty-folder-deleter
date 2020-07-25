@@ -1,12 +1,6 @@
 import os
-import sys
 
-try:
-    path = sys.argv[1]
-except IndexError:
-    path = "."
-
-def folder_deleter(folder_name: str, verbose_mode: bool = True) -> bool:
+def folder_deleter(folder_name: str, verbose_mode: bool = False) -> bool:
     """Delete a folder if it is empty, if the folder is deleted successfully it returns 0 otherwise returns 1
 
     Parameters
@@ -28,7 +22,13 @@ def folder_deleter(folder_name: str, verbose_mode: bool = True) -> bool:
         successfull_delete = 0
     else:
         if verbose_mode:
-            print("The folder wasn't deleted because it was not empty")
+            print(f"The folder \"{folder_name}\" wasn't deleted because it was not empty")
 
     return successfull_delete
 
+path = "."
+
+# Walk through the folder deleting the empty ones
+for folder_items in os.walk(path):
+    folder_path = folder_items[0]       
+    folder_deleter(folder_path, verbose_mode=True)
